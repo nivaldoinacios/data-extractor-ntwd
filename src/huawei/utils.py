@@ -44,3 +44,6 @@ def build_mac_list(lista):
         result.append(line[0])
 
     return result
+
+
+

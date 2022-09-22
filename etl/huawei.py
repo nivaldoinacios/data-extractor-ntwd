@@ -37,9 +37,21 @@ def tratament_station_all():
     return df
 
 
+def extract_statistics():
+    """Executa os comandos e retorna os outputs."""
+    # executa o comando Display station statistics sta-mac e retorna o output
+    mac_list = get_mac_list()
+    output = []
+    for mac in mac_list:
+        output.append(commands.display_station_statistics_sta_mac(mac, **DEVICE))
+
+    connection.disconnect()
+    return output
+
+
 def get_mac_list():
     """Retorna uma lista de MACs."""
-    output = extract_display_station_all()
+    output = extract_station_all()
     return utils.build_mac_list(output)
 
 
@@ -47,5 +59,6 @@ if __name__ == '__main__':
     # print(extract_access_user())
     # print(tratament_access_user())
     # print(extract_display_station_all())
-    print(tratament_station_all())
+    # print(tratament_station_all())
     # print(get_mac_list())
+    print(extract_statistics())
