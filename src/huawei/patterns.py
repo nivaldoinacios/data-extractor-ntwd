@@ -3,7 +3,7 @@ import re
 
 # patterns regex para identificar o tipo de output (huawei)
 # verifica o primeiro elemto da linha do output
-class Pattern:
+class Match:
     MAC = '^([0-9A-Fa-f]{4}[:-])'
     UserId = '^\s([\d]{1,4})'
 

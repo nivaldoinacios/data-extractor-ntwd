@@ -1,5 +1,5 @@
 # funções para o tratamento e processamento dos outputs dos comandos
-from utils import string_to_list, separate_fields, build_mac_list
+from src.huawei.utils import string_to_list, separate_fields, build_mac_list
 
 from netmiko import ConnectHandler
 from dotenv import load_dotenv

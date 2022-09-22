@@ -9,6 +9,3 @@ AC6005 = {
     'password': os.getenv('PASSWORD'),
     'global_delay_factor': 1.0,
 }
-
-# lista dos dispositivos
-DEVICES = {'DEVICE_01': AC6005}
