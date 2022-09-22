@@ -41,7 +41,6 @@ def get_mac_list():
     """Retorna uma lista de MACs."""
     output = extract_display_station_all()
     return utils.build_mac_list(output)
-# pipeline_2 = utils.string_to_list(pipeline_1, '^([0-9A-Fa-f]{4}[:-])')
 
 
 if __name__ == '__main__':
