@@ -4,6 +4,16 @@ import re
 timestamp = time.strftime("""%Y-%m-%dT%H:%M:%S%z""")
 
 
+# patterns regex para identificar o tipo de output (huawei)
+# verifica o primeiro elemto da linha do output
+# TODO: melhorar a regex para identificar o tipo de output
+# TODO: criar funções para cada tipo de output
+class Match:
+    MAC = '^([0-9A-Fa-f]{4}[:-])'
+    UserId = '^\s([\d]{1,4})'
+    Statistics = '^(0|[1-9][0-9]*)$'
+
+
 # transforma o output de string para lista
 def string_to_list(output, regx):
     output = output.split('\n')
@@ -46,4 +56,26 @@ def build_mac_list(lista):
     return result
 
 
+def build_statistics_list(lista):
+    result = []
+    x = '^(0|[1-9][0-9]*)$'
+    for line in lista:
+        if re.search(x, str(line)) is None:
+            pass
+        else:
+            result.append(line)
+
+    return result
+
+
+def get_numbers_from_list(lista):
+    result = []
+    regex = r"(\d[0-9]*)$"
+    for line in lista:
+        if re.findall(regex, line, re.MULTILINE) is None:
+            pass
+        else:
+            result.append(line)
+
+    return result
 

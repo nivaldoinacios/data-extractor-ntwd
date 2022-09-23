@@ -1,5 +1,4 @@
 # funções para o tratamento e processamento dos outputs dos comandos
-from src.huawei.utils import string_to_list, separate_fields, build_mac_list
 
 from netmiko import ConnectHandler
 from dotenv import load_dotenv
@@ -43,7 +42,7 @@ def display_station_statistics_sta_mac(mac, **dev):
     connection.enable()
     command = 'display station statistics sta-mac ' + mac
     output = connection.send_command(command)
-
+    connection.disconnect()
     return output
 
 
@@ -52,6 +51,7 @@ if __name__ == '__main__':
     # y = string_to_list(x, '^([0-9A-Fa-f]{4}[:-])')
     # z = separate_fields(y)
     # print(x, y, z, sep='\n')
-    x = display_station_statistics_sta_mac('00d7-6d3b-dc6f', **AC6005)
+    # x = display_station_statistics_sta_mac('00d7-6d3b-dc6f', **AC6005)
+    x = display_station_statistics_sta_mac('5ccd-5bf3-c091', **AC6005)
     print(x)
 

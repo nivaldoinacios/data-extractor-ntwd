@@ -1,6 +1,6 @@
-from src.huawei import utils, commands, devices, patterns, dataframes
 
-DEVICE = devices.AC6005
+
+DEVICE = configs.AC6005
 
 
 def extract_access_user():
@@ -37,22 +37,20 @@ def tratament_station_all():
     return df
 
 
-def extract_statistics():
-    """Executa os comandos e retorna os outputs."""
-    # executa o comando Display station statistics sta-mac e retorna o output
-    mac_list = get_mac_list()
-    output = []
-    for mac in mac_list:
-        output.append(commands.display_station_statistics_sta_mac(mac, **DEVICE))
-
-    connection.disconnect()
-    return output
-
-
 def get_mac_list():
     """Retorna uma lista de MACs."""
     output = extract_station_all()
     return utils.build_mac_list(output)
+
+
+def extract_statistics(mac):
+    """Executa os comandos e retorna os outputs."""
+    # executa o comando Display station statistics sta-mac e retorna o output
+    output = commands.display_station_statistics_sta_mac(mac, **DEVICE)
+    output = utils.string_to_list(output, patterns.Match.Statistics)
+    # output = utils.separate_fields(output)
+
+    return output
 
 
 if __name__ == '__main__':
@@ -61,4 +59,4 @@ if __name__ == '__main__':
     # print(extract_display_station_all())
     # print(tratament_station_all())
     # print(get_mac_list())
-    print(extract_statistics())
+    print(extract_statistics('5ccd-5bf3-c091'))
