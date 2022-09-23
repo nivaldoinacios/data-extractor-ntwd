@@ -78,4 +78,4 @@ def get_numbers_from_string(lista):
     else:
         result.append(matches)
 
-    return result
+    return result[0]
