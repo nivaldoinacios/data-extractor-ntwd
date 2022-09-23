@@ -31,7 +31,7 @@ def extract_statistics(mac):
     """Executa os comandos e retorna os outputs."""
     # executa o comando Display station statistics sta-mac e retorna o output
     output = commands.display_station_statistics_sta_mac(mac, **DEVICE)
-    output = utils.get_numbers_from_list(output)
+    output = utils.get_numbers_from_string(output)
     return output
 
 

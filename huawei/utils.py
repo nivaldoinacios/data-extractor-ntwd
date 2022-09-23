@@ -68,14 +68,14 @@ def build_statistics_list(lista):
     return result
 
 
-def get_numbers_from_list(lista):
+def get_numbers_from_string(lista):
     result = []
     regex = r"(\d[0-9]*)$"
-    for line in lista:
-        if re.findall(regex, line, re.MULTILINE) is None:
-            pass
-        else:
-            result.append(line)
+    matches = re.findall(regex, lista, re.MULTILINE)
+
+    if matches is None:
+        pass
+    else:
+        result.append(matches)
 
     return result
-
