@@ -1,4 +1,4 @@
-
+# TODO: refatorar em arquivos para tratament and load
 
 DEVICE = configs.AC6005
 

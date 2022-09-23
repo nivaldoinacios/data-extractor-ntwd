@@ -39,5 +39,5 @@ if __name__ == '__main__':
     # print(extract_display_access_user())
     # print(extract_display_station_all())
     print(get_mac_list())
-    print(extract_statistics('00:00:00:00:00:00'))
+    print(extract_statistics('5ccd-5bf3-c091'))
 
